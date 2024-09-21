@@ -14,7 +14,7 @@ function App() {
         <div className="p-5">
           <h2 className="text-4xl font-black">Menu</h2>
 
-          <div className="space-y-3 mt-10">
+          <div className="mt-10 space-y-3 ">
             {menuItems.map((item) => (
               <MenuItem 
               key={item.id} 
