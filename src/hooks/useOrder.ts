@@ -10,12 +10,16 @@ export default function useOrder() {
     //este es una copia del otro pero tiene otro tipo de dato
     //adicional llamado quantity
     const[order, setOrder] = useState<OrderItem[]>([])
-    
-    const [total, setTotal] = useState(0)
-    const [auth, setAuth] = useState(false)
+
+
+    const addItem = () => {//siempre puedes usar vs para saber que 
+        //colocarte en la funcion y ahi vas a ver esa firma 
+        //puedes copiarla y utlizarla en tus types vs nuna se va equivocar
+        console.log('agregando...')
+    }
 
 
     return {
-
+        addItem
     }
 }
