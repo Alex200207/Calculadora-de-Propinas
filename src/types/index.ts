@@ -5,6 +5,6 @@ export type MenuItem ={
 }
 
 
-export type OrderItem = MenuItem & {
+export type OrderItem = MenuItem & {//& es para unir dos tipos de datos
     quantity: number
 }

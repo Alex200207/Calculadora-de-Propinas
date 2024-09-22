@@ -1,10 +1,11 @@
 import MenuItem from "./components/MenuItem";
+import OrderContents from "./components/OrderContents";
 import { menuItems } from "./data/db";
 import useOrder from "./hooks/useOrder";
 
 function App() {
 
-  const {addItem} = useOrder()
+  const { order, addItem } = useOrder()
   return (
     <>
       <header className="bg-teal-400 py-5">
@@ -20,16 +21,18 @@ function App() {
           <div className="mt-10 space-y-3 ">
             {menuItems.map((item) => (//iteramos sobre cada elemento con una id unica
               <MenuItem 
-              key={item.id} 
-              item={item} 
+              key={item.id} //importante siempre colocar una key unica para cada elemento
+              item={item} //pasamos el item que es un objeto
               addItem={addItem}
               />
             ))}
           </div>
         </div>
 
-        <div>
-          <h2>Consumo</h2>
+        <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
+          <OrderContents
+          order={order}
+           />
         </div>
       </main>
     </>
