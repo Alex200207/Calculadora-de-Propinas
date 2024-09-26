@@ -8,6 +8,11 @@ export default function useOrder() {
   //en este caso el que tenemos en el type OrderItem lo pasamos como arreglo
   //este es una copia del otro pero tiene otro tipo de dato
   //adicional llamado quantity
+
+  const MAX: number = 5;
+  console.log(MAX);
+
+
   const [order, setOrder] = useState<OrderItem[]>([]);
 
   const addItem = (item: MenuItem) => {
@@ -36,8 +41,13 @@ export default function useOrder() {
     }
   };
 
+  const removeItems = (id: MenuItem['id']) => {
+    setOrder(prev => prev.filter(item => item.id !== id) )///traer los id que sean difrente al preciondo
+  }
+
   return {
     order,
     addItem,
+    removeItems,
   };
 }

@@ -5,7 +5,7 @@ import useOrder from "./hooks/useOrder";
 
 function App() {
 
-  const { order, addItem } = useOrder()
+  const { order, addItem,removeItems } = useOrder()
   return (
     <>
       <header className="bg-teal-400 py-5">
@@ -32,6 +32,7 @@ function App() {
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
           <OrderContents
           order={order}
+          removeItems={removeItems}
            />
         </div>
       </main>
