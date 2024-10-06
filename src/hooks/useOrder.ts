@@ -25,7 +25,7 @@ export default function useOrder() {
     //puedes copiarla y utlizarla en tus types vs nuna se va equivocar
     if (itemExist) {
       //identicar el elemento repetido
-      const updatedOrder = order.map(orderItem => orderItem.id === item.id? 
+      const updatedOrder = order.map(orderItem => orderItem.id === item.id? //si el id es igual al item.id
        {...orderItem, quantity: orderItem.quantity + 1} : orderItem )
 
        //que hace este codigo ?? toma una copia de lo que ya haya en nuestra orden
