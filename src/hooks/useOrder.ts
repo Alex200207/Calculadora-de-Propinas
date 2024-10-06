@@ -14,6 +14,8 @@ export default function useOrder() {
 
 
   const [order, setOrder] = useState<OrderItem[]>([]);
+  //crear state para la propina
+  const [tip,setTip] = useState(0)
 
   const addItem = (item: MenuItem) => {
     //identificando si un item ya existe en la orden usando find y el id
@@ -45,9 +47,19 @@ export default function useOrder() {
     setOrder(prev => prev.filter(item => item.id !== id) )///traer los id que sean difrente al preciondo
   }
 
+
+  const placeOrder = () => {
+    setOrder([])
+    setTip(0)
+  }
+
+
   return {
     order,
+    tip,
+    setTip,
     addItem,
     removeItems,
+    placeOrder
   };
 }

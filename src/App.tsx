@@ -3,10 +3,10 @@ import OrderContents from "./components/OrderContents";
 import { menuItems } from "./data/db";
 import useOrder from "./hooks/useOrder";
 import OrderTotal from "./components/OrderTotal";
+import TipPercentageForm from "./components/TipPercentageForm";
 
 function App() {
-
-  const { order, addItem,removeItems } = useOrder()
+  const { order, addItem, removeItems, tip, setTip, placeOrder } = useOrder();
   return (
     <>
       <header className="bg-teal-400 py-5">
@@ -16,28 +16,35 @@ function App() {
       </header>
 
       <main className=" max-w-7xl mx-auto py-20 grid md:grid-cols-2">
-        <div className="p-5">
+        <div className="p-5 ">
           <h2 className="text-4xl font-black">Menu</h2>
 
-          <div className="mt-10 space-y-3 ">
-            {menuItems.map((item) => (//iteramos sobre cada elemento con una id unica
-              <MenuItem 
-              key={item.id} //importante siempre colocar una key unica para cada elemento
-              item={item} //pasamos el item que es un objeto
-              addItem={addItem}
-              />
-            ))}
+          <div className="mt-10 space-y-3 rounded-lg">
+            {menuItems.map(
+              (
+                item //iteramos sobre cada elemento con una id unica
+              ) => (
+                <MenuItem
+                  key={item.id} //importante siempre colocar una key unica para cada elemento
+                  item={item} //pasamos el item que es un objeto
+                  addItem={addItem}
+                />
+              )
+            )}
           </div>
         </div>
 
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
-          <OrderContents
-          order={order}
-          removeItems={removeItems}
-           />
-           <OrderTotal
-           order={order}
-           />
+          {order.length > 0 ? (
+            <>
+              {" "}
+              <OrderContents order={order} removeItems={removeItems} />
+              <TipPercentageForm setTip={setTip} tip={tip} />
+              <OrderTotal order={order} tip={tip} placeOrder={placeOrder} />
+            </>
+          ) : (
+            <p className="text-center">No hay elementos en la orden</p> //nos muestre este mensaje
+          )}
         </div>
       </main>
     </>

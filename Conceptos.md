@@ -18,3 +18,14 @@ La extension de vs es exelente para el autocompletado.......
 
 -----------------------------------------------------
 
+/**
+ * `useCallback` es un hook de React que devuelve una versión memorizada de una función callback que solo cambia si una de las dependencias ha cambiado.
+ * 
+ * Esto es útil cuando se pasan callbacks a componentes hijos que dependen de valores que podrían cambiar, evitando así la recreación de funciones en cada renderizado.
+ * 
+ * @param {Function} callback - La función callback que se desea memorizar.
+ * @param {Array} dependencies - Una lista de dependencias que, cuando cambian, causan que la función callback se actualice.
+ * 
+ * @returns {Function} - La función callback memorizada.
+ */
+useCallback
